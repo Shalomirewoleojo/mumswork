@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}Questionnaire {% endblock title %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+{% block content %} 
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-{{message.tags}}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+            <h4>If you don't see your previous data, click on the arrow-back button to retrieve it.</h4>
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+<div class="container "> 
+   <div class="row justify-content-center">
+       <div class="col-lg-8 col-md-10">
+            <div class=" ">
+                <form action="{% url 'tocform' %}" class="stone stone1" method="POST">
+                {% csrf_token %}
+                Questionnaire number: <input style="width: 140px;" type="number" min="1" name="Qnum" placeholder="please re-write">
+                  <hr>
+
+                    
+                    <h4 class="hi">Cost of care for a diabetic child in Naira</h4>
+                    18.	Please provide the information required to estimate the amount you spend on caring for your child per month oninsulin injections, needles, 
+                    insulin syringes etc. and support equipment (fuel for generators, battery) per month in the table below.
+                    <div class="sit table-responsive">
+                        <table class="">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Unit cost</th>
+                                <th>Quantity (per month)</th>
+                                <!-- <th>Cost(per month, already in N)</th> -->
+                            </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Syringes </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Syringes_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Syringes_Quantity"></td>
+                                    <!-- <td>{{toc.Syringes_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Needles </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Needles_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Needles_Quantity"></td>
+                                    <!-- <td>{{toc.Needles_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Glucometer strips </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Glucometer_strips_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Glucometer_strips_Quantity"></td>
+                                    <!-- <td>{{toc.Glucometer_strips_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Regular insulin (Bolus) </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Regular_insulin_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Regular_insulinQuantity"></td>
+                                    <!-- <td>{{toc.Regular_insulin_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Basal insulin </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Basal_insulin_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" min="1" type="number" name="Basal_insulin_Quantity"></td>
+                                    <!-- <td>{{toc.Basal_insulin_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Ice packs </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Ice_packs_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Ice_packs_Quantity"></td>
+                                    <!-- <td>{{toc.Ice_packs_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Support equipment like fuel for generators, battery</td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Support_equipment_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Support_equipment_Quantity"></td>
+                                    <!-- <td>{{toc.Support_equipment_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Cost of transportation to the hospital per visit </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Cost_of_transportation_Unit_cost"></td>
+                                    <td> <input style="width: 40px;" min="1" type="number" name="Cost_of_transportation_Quantity"></td>
+                                    <!-- <td>{{toc.Cost_of_transportation_Cost_per_month | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td>Others, please specify: </td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <!-- <td>-</td> -->
+                                </tr>
+                                <tr>
+                                    <td><input style="width: 250px;" type="text" name="Item_9"><br> </td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Unit_cost_9"></td>
+                                    <td> <input style="width: 40px;" min="1" type="number" name="Quantity_9"></td>
+                                    <!-- <td>{{toc.Cost_per_month_9 | intcomma}}</td> -->
+                                </tr>
+                                <tr>
+                                    <td><input style="width: 250px;" type="text" name="Item_10"><br></td>
+                                    <td><input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Unit_cost_10"></td>
+                                    <td> <input style="width: 40px;" type="number" min="1" name="Quantity_10"></td>
+                                    <!-- <td>{{toc.Cost_per_month_10 | intcomma}}</td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        Indirect Costs (apart from medical costs): <input type="number" min="1" style="width: 200px; " placeholder="already in N" name="Indirect_cost"> <br> <hr>
+                        <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Thank you for participating in this study. Please make sure all neccessary fields are filled before you submit.</h5>
+                        <button type="button" class="previous-btn btn2">Prev</button>
+                        <button type="submit" class="submit-btn btn1 ">Submit</button>
+                    </div>  
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

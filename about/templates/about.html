@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}About {% endblock title %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+{% block content %}
+<div>
+    <nav class="navbar1">
+        <ul>
+            <li><a href="#About Me">About Me</a></li>
+            <li><a href="#Aim">Aim</a></li>
+            <li><a href="#details">Details about the form</a></li>
+            <li><a href="#consent">Your Consent</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container" >
+    <div class="row" id="About Me">
+        <div class="col-lg-6  col-sm-11 slow slow1">
+            <h2>About Me</h2>
+           <p>
+            I am a Medical Doctor, a Consultant Paediatrician about to conclude my sub-specialization in paediatrics and adolescent endocrinology,
+            a field of Paediatrics that is concerned with children and adolescents with endocrine disorders such as Diabetes Mellitus(DM) and obesity. <br>
+            My project involves determination of the annual cost of caring for a child with <abbr title="Diabetes Mellitus">DM</abbr>.
+           </p>
+        </div>
+        <div class="col-lg-6 col-sm-12 justify-content-center">
+            <img class="mum" src="{{med.img.url}}" alt="">
+        </div>
+    </div>
+
+    <div class="row" id="Aim">
+       <div class="col-lg-7 col-sm-11 fast">
+        <h2>Aim</h2>
+        <p>
+            Results obtained from this study would be of benefit, as it would enable us counsel other parents that have children with diabetes appropriately, particularly on the expected cost implication of caring for the affected child, especially when <abbr title="Diabetes Mellitus">DM</abbr> is newly diagnosed. <br>
+            It would also enable us to have a concrete evidence that can be presented to Governmental and non-governmental organisation with the aim of receiving social support and resources that would be devoted to assist in bearing some of the cost.
+        </p>
+       </div>
+       <div></div>
+    </div>
+
+    <div class="row" id="details">
+        <div></div>
+       <div class="col-lg-7 col-sm-11 slow">
+            <h2>Details about the form</h2>
+            <p>
+                The study will involve you filling a questionnaire on basic information about your child and the family, and I will take your child’s weight and height. <br>
+                In addition, it will involve you estimating how much you are spending on your child’s health condition, which includes the medications he/she is using and all the material you use to monitor his/her condition. <br>
+                You are not compelled to be a participant of this study, and at any time even after commencing, if you have a strong desire to disengage from the study, it would not in any way affect your relationship with your health care providers.
+            </p>
+       </div>
+    </div>
+
+    <div class="row" id="consent">
+       <div class="col-lg-7 col-sm-11 fast">
+            <h2>Your Consent</h2>
+            <p>
+            I am glad to say that your child/ward has been selected as one of the participants, but I will need your consent to go ahead. <br>
+            It entails you filling my consent form while in addition your child, if above the age of seven, fills an assent form. <br>
+            I have obtained permission from the ethics committee of <abbr title="Lagos University Teaching Hospital">LUTH</abbr>,  <abbr title="Lagos State University Teaching Hospital">LASUTH</abbr> and <abbr title="Lagos State Health Service Commission">LSHSC</abbr> to carry out this study. Any abnormalities detected would be handled appropriately with your consent. <br>
+            Please click on the button below if I have your consent.
+            </p>
+       </div>
+       <div></div>
+    </div>
+    <a class="btn" href="{% url 'form' %}">Fill Consent Form</a>
+</div>
+
+{% endblock content %}
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

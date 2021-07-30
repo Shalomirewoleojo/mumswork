@@ -1,0 +1,229 @@
+*{
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+.logo{
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.footer{
+    text-align: center;
+    background-color: rgb(235, 213, 255);
+    font-size: 15px;
+    margin-top: 20px;
+    color: black;
+}
+
+.footer p{
+    margin-top: 15px;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer a {
+    color: palevioletred;
+}
+
+.sack {
+    background: whitesmoke;
+    border: 5px solid rgb(235, 213, 255);
+}
+
+.navbar-nav{
+    text-align: right;
+}
+
+/* .navbar-nav:hover {
+    color: rebeccapurple;
+} */
+
+.nav-item{
+    margin: 10px;
+}
+
+/* .nav-item:hover{
+    color: red!important;
+} */
+
+.navbar-toggler{
+    margin-left: 90%;
+}
+
+.navbar-toggler:focus{
+    outline: none;
+}
+
+.slow, .fast{
+    box-shadow: violet 0 0 20px 0;
+    transition: transform 1s;
+    background: linear-gradient(lightcyan, lightgoldenrodyellow);
+    /* background-color: lightcyan lightgoldenrodyellow; */
+}
+
+.fast {
+    transform: translateX(370px);
+}
+
+.fast:hover, .slow:hover {
+    transform: translateX(220px);
+}
+
+.slow1:hover{
+    transform: translateX(0px);
+}
+
+
+.mum{
+    margin: 10px 30px;
+    width: 330px;
+    height: 270px;
+    box-shadow: gray 0 0 15px 0;
+    border-radius: 19px;
+    border: 1px solid powderblue;
+}
+
+.mum:hover{
+    box-shadow: rgb(201, 145, 253) 0 0 15px 0;
+}
+
+a{
+    color: rgb(201, 145, 253);
+}
+
+ul{
+    list-style: none;
+}
+
+p{
+    font-size: 20px;
+    color: brown;
+}
+
+form p{
+    font-size: 18px;
+}
+
+.row {
+    padding-bottom: 70px;
+}
+
+.btn{
+    background: linear-gradient(lightcyan, lightgoldenrodyellow);
+    border-radius: 10px;
+    font-size: 15px;
+    border: 1px solid mediumblue;
+}
+
+.cane {
+    background-color: inherit;
+    color: lightpink;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+form:hover{
+    box-shadow: lightpink 0 0 25px 0;
+}
+
+.stone{
+    background: linear-gradient(lightcyan, lightgoldenrodyellow);
+    padding: 0 30px 30px;
+    border: 1px solid lightpink;
+    margin-bottom: 30px;
+    font-style: unset;
+    box-shadow: lightpink 0 0 20px 0;
+    height: 105%;
+}
+
+.stone1 {
+    background: linear-gradient(lightcyan, lightgoldenrodyellow); 
+}
+
+.hi{
+    line-height: 80px;
+    text-align: center;
+    color: black;
+}
+/* 
+.hi::after {
+    content: '';
+    height: 2px;
+    width: 50px;
+    background-color: rgb(241, 109, 109);
+    position: absolute;
+    top: 40px;
+} */
+
+form input, form select, form textarea, table{
+    width: 65%;
+    margin: 5px 20px;
+    border-radius: 5px;
+    border: 1px solid lightpink;;
+}
+
+.btn1, .btn2{
+    background: linear-gradient(lightcyan, lightgoldenrodyellow);
+    border-radius: 10px;
+    font-size: 15px;
+    border: 1px solid rgb(241, 109, 109);
+    margin-top: 20px;
+    padding: 10px;
+    width: 100px;
+    color: red;
+    float: right;
+}
+
+hr{
+    border: 1px solid lightpink;;
+    border-radius: 1px;
+}
+
+.btn2{
+    float: left;
+}
+
+.btn1:hover, .btn2:hover{
+    cursor: pointer;
+    color: thistle;
+}
+
+form input:focus, select:focus, textarea:focus{
+    outline: none;
+}
+
+table, th{
+    text-align: center;
+}
+
+th:first-child, td:first-child {
+    width: 40%;
+}
+
+th:nth-child(2), td:nth-child(2){
+    width: 20%;
+}
+
+th:nth-child(3), td:nth-child(3){
+    width: 10%;
+}
+
+@media only screen and (max-width: 991px){
+    .fast {
+        transform: translateX(0px);
+    }
+
+    .fast:hover, .slow:hover {
+        transform: translateX(0px);
+        box-shadow: rebeccapurple 0 0 30px 0;
+    }
+}
+
+.step{
+    display: none;
+}
+
+.step.active{
+    display: block;
+}

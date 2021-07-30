@@ -1,0 +1,31 @@
+#header{
+    height: 50px;
+    background-color: palevioletred;
+    color: white;
+}
+#branding h1{
+    color: white;
+}
+a:link,
+a:visited{
+    color: palevioletred ;
+}
+div.breadcrumbs{
+    background-color: rgb(116, 82, 116);
+    color: black;
+}
+div.breadcrumbs a{
+    color: black;
+}
+.module h2, .module caption, .inline-group h2 {
+    background-color: grey;
+    color: black;
+}
+.button.default, input[type=submit].default, .submit-row input.default,input[type="submit"], button {
+    background-color: palevioletred;
+    color: white;
+}
+    
+.submit-row a.deletelink {
+    background: palevioletred;
+}

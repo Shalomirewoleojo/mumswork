@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Consent Form {% endblock title %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+{% block content %}
+
+<div class="jumbotron  cane" >
+    <h4>
+        Thank you for deciding to participate in this survey. 
+        Your personal information will be kept secure. <br> 
+        To fill your information into the questionnaire, 
+        we will need to have your evidence of consent by filling in the form below.
+    </h4>
+</div>
+
+<div class="container ">
+   <div class="row justify-content-center">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger alert-{{message.tags}}" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true" >&times;</span>
+                </button>
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+       <div class="col-lg-6 col-md-9">
+            <form action="{% url 'consentform' %}" class="stone" method="POST" >
+            {% csrf_token %}
+                <h4 class="hi">Guardian's Constent Form</h4>
+                I <input style="width: 130px;" type="text" placeholder="First Name" name="first_name">
+                <input style="width: 140px;" type="text" placeholder="Last Name" name="last_name"> <br> 
+                have understood the purpose of this research and
+                hereby give consent to the researcher to be one of her subjects for this study. <br>
+                <input type="number" placeholder="Phone Number (Optional)" name="phone_number">
+                <input type="text" placeholder="Name of Child/Ward" name="ward_name"> <br> <br>
+                Please fill this for easy identification:
+                <input type="text" placeholder="Username" name="username"> 
+                <input type="password" placeholder="Password" name="password1"> 
+                <input type="password" placeholder="Repeat Password" name="password2"> 
+                
+                <h4 class="hi">Assent Form</h4>
+                I <input type="text" placeholder="Name (must be above 7years)" name="assent_name"> <br>
+                hereby give consent to the researcher to be one of her subjects for this study.
+                <br>
+                <button class="btn1">Submit</button>
+            </form>
+       </div>
+   </div>
+</div>
+
+{% endblock content %}
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

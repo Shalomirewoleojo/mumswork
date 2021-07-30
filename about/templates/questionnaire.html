@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}Questionnaire {% endblock title %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+{% block content %} 
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-danger alert-{{message.tags}}" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+            <h4>If you don't see your previous data, click on the arrow-back button to retrieve it.</h4>
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+<div class="container "> 
+   <div class="row justify-content-center">
+       <div class="col-lg-8 col-md-10">
+            <form action="{% url 'questionform' %}" class="stone stone1" method="POST">
+            {% csrf_token %}
+                <div class="step step-1 active">
+                    Questionnaire number: <input style="width: 60px;" type="number" min="1" name="Qnum">
+                    <!-- {{ num|length }} -->
+                    Date: <input type="date" style="width: 150px;" name="Date"> <hr>
+
+
+                    <h4 class="hi">Biodata</h4>
+                    1. Age: <input style="width: 40px;" type="number" min="1" name="Age_year">years <input style="width: 40px;" type="number" min="1" name="Age_month">months. Date of Birth <input type="date" style="width: 150px;" name="Date_of_birth"> <br>
+                    2. <abbr title="Local Government Area">LGA</abbr> of residence: <input style="width: 250px;" type="text" name="LGA"><br>
+                    3. Ethnicity: 
+                    <select style="width: 150px;" name="Ethnicity">
+                        <option value="">--Select--</option>
+                        <option value=" Hausa"> Hausa</option>
+                        <option value="Yoruba">Yoruba</option>
+                        <option value="Igbo">Igbo</option>
+                        <option value="Fulani">Fulani</option>
+                        <option value="TIV">TIV</option>
+                        <option value="Efik">Efik</option>
+                        <option value="Ijaw">Ijaw</option>
+                        <option value="Igbo">Igbo</option>
+                        <option value="Ibibio">Ibibio</option>
+                        <option value="Kanuri">Kanuri</option>
+                        <option value="Nupe">Nupe</option>
+                        <option value="Igala">Igala</option>
+                        <option value="Idoma">Idoma</option>
+                        <option value="Itsheki">Itsheki</option>
+                        <option value="Ilaje">Ilaje</option>
+                        <option value="Urboho">Urboho</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <br>
+                    4. Religion:
+                    <select style="width: 150px;" name="Religion"> 
+                        <option value="">--Select--</option>
+                        <option value="Christianity">Christianity</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Traditional">Traditional</option>
+                        <option value="Neutral">Neutral</option>
+                    </select> <br>
+                    5. Duration of diabetes since first diagnosis: <input style="width: 40px;" type="number" min="1" name="Duration_years">years <input style="width: 40px;" type="number" name="Duration_months">months. <br>
+                    6. Hospital at which care is received: <input type="text" style="width: 300px;" name="Hospital"><br>
+                    <button type="button" class="next-btn btn1" >Next</button>
+                </div>
+
+                <div class="step step-2">
+                    <h4 class="hi">Family structure and socio-economic characteristics</h4>
+                7. Type of family:
+                <select style="width: 150px;" name="Family">
+                    <option value="">--Select--</option>
+                    <option value="Monogamous">Monogamous</option>
+                    <option value="Polygamous">Polygamous</option>
+                </select> <br>
+                8. Number of children in the family: <input style="width: 40px;" type="number" min="1" name="Children"><br>
+                9. Father's level of education:
+                <select style="width: 150px;" name="Father_education">
+                    <option value="">--Select--</option>
+                    <option value="Primary">Primary</option>
+                    <option value="Secondary">Secondary</option>
+                    <option value="Tertiary">Tertiary</option>
+                    <option value="Professional/Post Graduate">Professional/Post Graduate</option>
+                </select> <br>
+                10. Mothers level of education:
+                <select style="width: 150px;" name="Mother_education">
+                    <option value="">--Select--</option>
+                    <option value="Primary">Primary</option>
+                    <option value="Secondary">Secondary</option>
+                    <option value="Tertiary">Tertiary</option>
+                    <option value="Professional/Post Graduate">Professional/Post Graduate</option>
+                </select> <br> 
+                11. Father's occupation:
+                <select style="width: 150px;" name="Father_occupation">
+                    <option value="">--Select--</option>
+                    <option value="Artisan/Factory worker">Artisan/Factory worker</option>
+                    <option value="Office Staff">Office Staff</option>
+                    <option value="Professional/Management">Professional/Management</option>
+                </select> <br> 
+                12. Mother's occupation:
+                <select style="width: 150px;" name="Mother_occupation">
+                    <option value="">--Select--</option>
+                    <option value="Artisan/Factory worker">Artisan/Factory worker</option>
+                    <option value="Office Staff">Office Staff</option>
+                    <option value="Professional/Management">Professional/Management</option>
+                </select> <br> 
+                13. Father's income:
+                <select style="width: 150px;" name="Father_income">
+                    <option value="">--in N--</option>
+                    <option value="less than N50,000"> less than 50,000 </option>
+                    <option value="N50,000.00 – 100,000.00">50,000.00 – 100,000.00 </option>
+                    <option value="greater than N100,000.00">greater than 100,000.00</option>
+                </select> <br> 
+                14. Mother's income:
+                <select style="width: 150px;" name="Mother_income">
+                    <option value="">--in N--</option>
+                    <option value="less than N50,000"> less than 50,000 </option>
+                    <option value="N50,000.00 – 100,000.00">50,000.00 – 100,000.00 </option>
+                    <option value="greater than N100,000.00">greater than 100,000.00</option>
+                </select> <br> 
+                15. Total income per month: <input type="number" min="1" style="width: 150px;" placeholder="already in N" name="Total_income_per_month"> <br>
+                16.	Number of clinic visits per month: <input style="width: 40px;" type="number" min="1" name="Clinic_visits_per_month"> <br>
+                17.	Number of visits to any other centers for diabetes care: <input style="width: 40px;" type="number" min="1" name="Visits_to_other_centres"> <br> 
+                    
+                    <button type="button" class="previous-btn btn2">Prev</button>
+                    <button type="button" class="next-btn btn1" >Next</button>
+                </div>
+
+                
+               
+                
+                <div class="step step-4">
+
+                    <!-- <h6>Summary of cost of care:</h6> -->
+                    <!-- Direct Cost: {{question.Direct_cost | intcomma}} <br> -->
+                    <!-- Total Cost: {{question.Total_cost | intcomma}} <br> -->
+                    
+                    19.	What percentage of your total income do you spend on caring for your child with DM? <input style="width: 40px;" min="1" type="number" name="Percentage_of_income_spent">% <br>
+                    20.	Do you receive any financial assistance from any source? (Govt./NGO)
+                    <select style="width: 80px;" name="Aid_from_other_sources">
+                        <option value="">--Select--</option>
+                        <option value="Yes">Yes </option>
+                        <option value="No">No</option>
+                    </select> <br> 
+                    21.	If so, how much? <input type="number" min="1" style="width: 200px; " placeholder="already in N" name="How_much"> <br>
+                    22.	Do you work? 
+                    <select style="width: 80px;" name="Working">
+                        <option value="">--Select--</option>
+                        <option value="Yes">Yes </option>
+                    <option value="No">No</option>
+                </select> <br> 
+                23.	If yes, who takes care of your child, while you are at work?
+                <select style="width: 150px;" name="Care_taker">
+                    <option value="">--Select--</option>
+                    <option value="Paid Worker"> Paid Worker </option>
+                    <option value="Relative">Relative </option>
+                    <option value="old enough">He/She is old enough to take care of himself/herself.</option>
+                </select> <br>
+                If Paid Worker, what is the cost?<input type="number" min="1" style="width: 200px; " placeholder="already in N" name="Cost_of_care_taker"> <br>
+                24.	How much extra time do you spend caring for your child per day?<input type="number" min="1" style="width: 40px; "  name="Extra_time_spent"> hours. <br>
+                25.	Please select any of the following stigmatizing attitudes you may be facing:
+                <select style="width: 150px;" name="Stigma">
+                    <option value="">--Select--</option>
+                    <option value="avoided by other parents">Being avoided by other parents </option>
+                    <option value="Your child being excluded from playing with other children">Your child being excluded from playing with other children</option>
+                    <option value="Avoidance/exclusion by family members">Avoidance/exclusion by family members </option>
+                    <option value="Insurance ineligibility">Insurance ineligibility </option>
+                    <option value="Workplace discrimination because of your child’s illness">Workplace discrimination because of your child’s illness </option>
+                </select> <br>
+                26.	Have you stopped working because of the extra care your child needs? 
+                <select style="width: 80px;" name="Stopped_working">
+                    <option value="">--Select--</option>
+                    <option value="Yes">Yes </option>
+                    <option value="No">No</option>
+                </select> <br>
+                27.	If yes, what is the amount you would have been earning if you were still working?<input type="number" min="1" style="width: 200px; " placeholder="already in N" name="Money_foregone"> <br>
+                28.	Are there other activities that caring for your child has prevented you from participating in? 
+                <select style="width: 80px;" name="Activities_forgone">
+                    <option value="">--Select--</option>
+                    <option value="Yes">Yes </option>
+                    <option value="No">No</option>
+                </select> <br>
+                If so, please specify: <textarea name="" id="" cols="50" rows="3" name="They_are"></textarea>
+                
+                <button type="button" class="previous-btn btn2">Prev</button>
+                <button type="button" class="next-btn btn1" >Next</button>
+                </div>
+                
+                <div class="step step-5 ">
+                
+                <h4 class="hi">Anthropometric measurements</h4>
+                    1. Weight <input style="width: 40px;" type="number" min="1" name="Weight"> kg <br>
+                    2. Height <input style="width: 40px;" type="number" min="1" name="Height"> cm   <br>
+                    <!-- 3. BMI (Weight/Height^2) {{question.BMI | floatformat:2 | intcomma}} <br> <hr> <br> -->
+
+                    <h5>Laboratory estimation of serum HbA1c: <input type="number" min="1" style="width: 200px; " placeholder="already in N" name="Lab_estimation"> </h5> <br>
+                    <h5> Please make sure all neccessary fields are filled before you submit.</h5>
+                    
+                    <button type="button" class="previous-btn btn2">Prev</button>
+                    <button type="submit" class="submit-btn btn1 ">Submit</button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
